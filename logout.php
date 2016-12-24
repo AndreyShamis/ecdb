@@ -1,7 +1,7 @@
 <?php
 	//Start session
 	session_start();
-	
+    require_once('include/Class_DB.php');
 	//Unset the variables stored in session
 	unset($_SESSION['SESS_MEMBER_ID']);
 	unset($_SESSION['SESS_FIRST_NAME']);

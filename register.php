@@ -1,5 +1,6 @@
 <?php
 	session_start();
+    require_once('include/Class_DB.php');
 	require_once('include/debug.php');
 ?>
 <!DOCTYPE HTML> 

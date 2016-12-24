@@ -113,6 +113,16 @@
 								</td>
 								<td>
 									<select name="currency">
+                                        <option value="ILS"
+                                            <?php
+                                            if(!isset($_POST['submit']) && $executesql['currency'] == 'ILS') {
+                                                echo 'selected';
+                                            }
+                                            if(isset($_POST['submit']) && $_POST['currency'] == 'ILS') {
+                                                echo 'selected';
+                                            }
+                                            ?>
+                                        >ILS</option>
 										<option value="SEK" 
 										<?php
 											if(!isset($_POST['submit']) && $executesql['currency'] == 'SEK') {
