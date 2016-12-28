@@ -1,4 +1,5 @@
 <?php
+	require_once('include/Class_DB.php');
 	require_once('include/login/auth.php');
 	require_once('include/debug.php');
 ?>

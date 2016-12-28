@@ -1,0 +1,4 @@
+## Default .htaccess file
+## RewriteEngine On
+## RewriteCond %{HTTP_HOST} !^www\.ecdb.hldns\.ru
+## RewriteRule (.*) http://www.ecdb.hldns.ru/$1 [R=301,L]
