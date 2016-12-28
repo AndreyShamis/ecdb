@@ -262,7 +262,7 @@ class DataBase{
 
 }
 
-$db = new DataBase("localhost","USER_HERE","PASSWORD_HERE","ecdb");
+$db = new DataBase("localhost","{USER_NAME}","{USER_PASSWORD}","ecdb");
 
 
 
