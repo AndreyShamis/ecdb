@@ -5,7 +5,7 @@ class AddMenuProj {
 		require_once('include/login/auth.php');
 		
 		$owner	=	$_SESSION['SESS_MEMBER_ID'];
-		$id		= 	(int)$_GET['edit'];
+		$id		= 	(int)$_REQUEST['edit'];
 		
 		echo '<option class="main_category" value=""> - Project - </option>';
 		

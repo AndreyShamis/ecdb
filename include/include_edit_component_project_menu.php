@@ -5,7 +5,7 @@ class AddMenuProj {
 		require_once('include/login/auth.php');
 		
 		$owner	=	$_SESSION['SESS_MEMBER_ID'];
-		$id 	= 	(int)$_GET['edit'];
+		$id 	= 	(int)$_REQUEST['edit'];
 		
 		$ProjectNameQuery = "SELECT * FROM projects WHERE project_owner = ".$owner." ORDER by project_name ASC";
 		$sql_exec_projname = $db->query($ProjectNameQuery);

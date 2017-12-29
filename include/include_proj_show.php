@@ -5,13 +5,13 @@ class ProjectShow {
 		require_once('login/auth.php');
 		
 		$owner = $_SESSION['SESS_MEMBER_ID'];
-		$project_id = (int)$db->real_escape_string($_GET["proj_id"]);
+		$project_id = (int)$db->real_escape_string($_REQUEST["proj_id"]);
 		
 		
-		if(isset($_GET['by'])) {
+		if(isset($_REQUEST['by'])) {
 		
-			$by			=	strip_tags($db->real_escape_string($_GET["by"]));
-			$order_q	=	strip_tags($db->real_escape_string($_GET["order"]));
+			$by			=	strip_tags($db->real_escape_string($_REQUEST["by"]));
+			$order_q	=	strip_tags($db->real_escape_string($_REQUEST["order"]));
 			
 			if($order_q == 'desc' or $order_q == 'asc'){
 				$order = $order_q;

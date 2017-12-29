@@ -6,10 +6,10 @@ class Shoplist {
 		
 		$owner = $_SESSION['SESS_MEMBER_ID'];
 		
-		if(isset($_GET['by'])) {
+		if(isset($_REQUEST['by'])) {
 		
-			$by         = $_GET["by"];
-			$order      = $_GET["order"];
+			$by         = $_REQUEST["by"];
+			$order      = $_REQUEST["order"];
 			
 			$bysql      = $db->real_escape_string($by);
 			$ordersql   = $db->real_escape_string($order);

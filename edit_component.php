@@ -4,7 +4,7 @@
 	require_once('include/debug.php');
 	
 	$owner 	= 	$_SESSION['SESS_MEMBER_ID'];
-	$id 	= 	(int)$_GET['edit'];
+	$id 	= 	(int)$_REQUEST['edit'];
 
 	$GetDataComponent = $db->query("SELECT * FROM data WHERE id = ".$id." AND owner = ".$owner."");
 	$executesql = $db->fetch_assoc($GetDataComponent);
@@ -125,9 +125,9 @@
 				
 				<form class="globalForms noPadding" action="" method="post">
 					<div class="textBoxInput">
-						<label class="keyWord boldText">Comment</label>
-						<div class="text">
-							<textarea name="comment" rows="4" cols="104"><?php echo $executesql['comment']; ?></textarea>
+						<label class="keyWord boldText">Comment </label>
+						<div class="text"><!--cols="104"-->
+							<textarea name="comment" rows="14" style="width: 99%;"><?php echo $executesql['comment']; ?></textarea>
 						</div>
 					</div>
 					<table class="globalTables leftAlign noHover" cellpadding="0" cellspacing="0">
@@ -228,14 +228,9 @@
 									<button class="button white small" name="orderquant_decrease" type="submit"><span class="icon medium roundMinus"></span></button>
 								</td>
 							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+                            <tr>
+                                <td colspan="6"></td>
+                            </tr>
 							<tr>
 								<td class="boldText">
 									SMD
@@ -283,14 +278,9 @@
 									?>
 								</td>
 							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+                            <tr>
+                                <td colspan="6"></td>
+                            </tr>
 							<tr>
 								<td class="boldText">
 									Weight
@@ -336,14 +326,9 @@
 								<td></td>
 								<td></td>
 							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+                            <tr>
+                                <td colspan="6"></td>
+                            </tr>
 							<tr>
 								<td class="boldText">
 									Image URL 1
@@ -390,7 +375,7 @@
 								</td>
 								
 									<?php
-										$Echo       = "SELECT projects_data_component_id FROM projects_data WHERE projects_data_component_id = ".(int)$_GET['edit']." ";
+										$Echo       = "SELECT projects_data_component_id FROM projects_data WHERE projects_data_component_id = ".(int)$_REQUEST['edit']." ";
 										$sql_echo   = $db->query($Echo);
 										
 										if ($db->count($sql_echo) == 0) {

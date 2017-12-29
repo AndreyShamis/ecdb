@@ -6,11 +6,11 @@ class NameSub {
 		require_once('include/login/auth.php');
 		$owner = $_SESSION['SESS_MEMBER_ID'];
 
-		if(isset($_GET['cat'])) {
-			$cat = (int)$_GET['cat'];
+		if(isset($_REQUEST['cat'])) {
+			$cat = (int)$_REQUEST['cat'];
 		}
-		if(isset($_GET['subcat'])) {
-			$subcat = (int)$_GET['subcat'];
+		if(isset($_REQUEST['subcat'])) {
+			$subcat = (int)$_REQUEST['subcat'];
 
 			if ($subcat < 999) {
 				$cat = substr($subcat, -3, 1);
@@ -31,7 +31,7 @@ class NameSub {
 			echo '<a href="category.php?subcat=';
 			echo $ShowDetailsSubCatname['id'];
 			echo '" ';
-			if(isset($_GET['subcat'])) {
+			if(isset($_REQUEST['subcat'])) {
 				if ($ShowDetailsSubCatname['id'] == $subcat) {
 					echo 'class="selected"';
 				}

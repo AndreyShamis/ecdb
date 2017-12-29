@@ -3,7 +3,7 @@
 	require_once('include/login/auth.php');
 	require_once('include/debug.php');
 	
-	if (!isset($_GET["proj_id"])) {
+	if (!isset($_REQUEST["proj_id"])) {
 		header("Location: error.php?id=3");
 	}
 ?>
@@ -13,7 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="include/style.css" media="screen"/>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 		<meta name="description" content="BOM-list for project <?php
-        $project_id     = $db->real_escape_string($_GET["proj_id"]);
+        $project_id     = $db->real_escape_string($_REQUEST["proj_id"]);
         $owner          = $_SESSION['SESS_MEMBER_ID'];
 
         $result         = $db->query("SELECT project_name FROM projects WHERE project_owner = ".$owner." AND project_id = ".$project_id."");
@@ -26,7 +26,7 @@
 		<link rel="shortcut icon" href="favicon.ico" />
 		<link rel="apple-touch-icon" href="img/apple.png" />
 		<title>Viewing project - <?php
-        $project_id     = $db->real_escape_string($_GET["proj_id"]);
+        $project_id     = $db->real_escape_string($_REQUEST["proj_id"]);
         $owner          = $_SESSION['SESS_MEMBER_ID'];
 
         $result         = $db->query("SELECT project_name FROM projects WHERE project_owner = ".$owner." AND project_id = ".$project_id."");
@@ -50,7 +50,7 @@
 				<div id="content">
 					<h1>Viewing project 
 						<?php
-                $project_id = $db->real_escape_string($_GET["proj_id"]);
+                $project_id = $db->real_escape_string($_REQUEST["proj_id"]);
                 $owner      = $_SESSION['SESS_MEMBER_ID'];
 
                 $result     = $db->query("SELECT project_name FROM projects WHERE project_owner = ".$owner." AND project_id = ".$project_id."");
@@ -67,8 +67,8 @@
 								<th></th>
 								<th>
 									<a href="?proj_id=<?php echo $project_id; ?>&by=name&order=<?php 
-										if(isset($_GET['order'])){
-											$order = $_GET['order'];
+										if(isset($_REQUEST['order'])){
+											$order = $_REQUEST['order'];
 											if ($order == 'asc'){
 												echo 'desc';
 											}
@@ -83,8 +83,8 @@
 								</th>
 								<th>
 									<a href="?proj_id=<?php echo $project_id; ?>&by=category&order=<?php 
-										if(isset($_GET['order'])){
-											$order = $_GET['order'];
+										if(isset($_REQUEST['order'])){
+											$order = $_REQUEST['order'];
 											if ($order == 'asc'){
 												echo 'desc';
 											}
@@ -99,8 +99,8 @@
 								</th>
 								<th>
 									<a href="?proj_id=<?php echo $project_id; ?>&by=manufacturer&order=<?php 
-										if(isset($_GET['order'])){
-											$order = $_GET['order'];
+										if(isset($_REQUEST['order'])){
+											$order = $_REQUEST['order'];
 											if ($order == 'asc'){
 												echo 'desc';
 											}
@@ -115,8 +115,8 @@
 								</th>
 								<th>
 									<a href="?proj_id=<?php echo $project_id; ?>&by=package&order=<?php 
-										if(isset($_GET['order'])){
-											$order = $_GET['order'];
+										if(isset($_REQUEST['order'])){
+											$order = $_REQUEST['order'];
 											if ($order == 'asc'){
 												echo 'desc';
 											}
@@ -131,7 +131,7 @@
 								</th>
 								<th>
 									<a href="?proj_id=<?php echo $project_id; ?>&by=smd&order=<?php 
-										if(isset($_GET['order'])){
+										if(isset($_REQUEST['order'])){
 											if ($order == 'asc'){
 												echo 'desc';
 											}
@@ -146,8 +146,8 @@
 								</th>
 								<th>
 									<a href="?proj_id=<?php echo $project_id; ?>&by=price&order=<?php 
-										if(isset($_GET['order'])){
-											$order = $_GET['order'];
+										if(isset($_REQUEST['order'])){
+											$order = $_REQUEST['order'];
 											if ($order == 'asc'){
 												echo 'desc';
 											}
@@ -162,8 +162,8 @@
 								</th>
 								<th>
 									<a href="?proj_id=<?php echo $project_id; ?>&by=quantity&order=<?php 
-										if(isset($_GET['order'])){
-											$order = $_GET['order'];
+										if(isset($_REQUEST['order'])){
+											$order = $_REQUEST['order'];
 											if ($order == 'asc'){
 												echo 'desc';
 											}
@@ -178,8 +178,8 @@
 								</th>
 								<th>
 									<a href="?proj_id=<?php echo $project_id; ?>&by=quantity&order=<?php 
-										if(isset($_GET['order'])){
-											$order = $_GET['order'];
+										if(isset($_REQUEST['order'])){
+											$order = $_REQUEST['order'];
 											if ($order == 'asc'){
 												echo 'desc';
 											}
