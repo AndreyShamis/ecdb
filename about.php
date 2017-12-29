@@ -26,8 +26,8 @@
 			
 			<!-- Main menu -->
 			<?php                        
-                        include './include/menu_public.php';
-                        ?>
+            include './include/menu_public.php';
+            ?>
 			<!-- END -->
 			
 			<!-- Main content -->
@@ -38,10 +38,10 @@
 							Follow <a target="_blank" href="https://twitter.com/#!/ecDBnet">@ecDBnet</a> at Twitter to get the latest updates!
 						</div>
 						<h1>What is ecDB?</h1>
-							
-							ecDB is basically a place where you, as an electronics hobbyist (or professional) can add your own components to your personal database to keep track of what components you own, where they are, how many you own and so on.
-								
-						<br /><br />
+							ecDB is basically a place where you, as an electronics hobbyist (or professional) can add your
+                        own components to your personal database to keep track of what components you own, where they are,
+                        how many you own and so on.
+						<br/><br/>
 						<a href="img/about/index.png"><img src="img/about/index_thumbnail.png"></a>				
 						<a href="img/about/add.png"><img src="img/about/add_thumbnail.png"></a><br /><br />
 						<h1>Who & Why?</h1>
@@ -57,15 +57,7 @@
 							
 						<br /><br />
 						<h1>What does it cost?</h1>
-						
 							ecDB is completely free!<br />
-							<!--But if you like ecDB you can use this button to donate us some money.
-							<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-								<input type="hidden" name="cmd" value="_s-xclick">
-								<input type="hidden" name="hosted_button_id" value="7ZT5UY5XMHA52">
-								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-							</form>
-							-->
 						<br />
 						<h1>Is ecDB really done?</h1>
 						No! ecDB is still under development. Here are some of the upcoming features:<br /><br />

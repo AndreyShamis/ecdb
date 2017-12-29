@@ -6,4 +6,3 @@
 	include('header.css');
 	include('globalTables.css');
 	include('icons.css');
-?>
