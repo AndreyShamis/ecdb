@@ -1,11 +1,19 @@
 <?php
+
+/**
+ * Class ShowComponents
+ */
 class ShowComponents {
+
+    /**
+     *
+     */
 	public function Index() {
         global $db;
 		require_once('login/auth.php');
 
 		$owner = $_SESSION['SESS_MEMBER_ID'];
-
+        $same_q = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE owner = ";
 		if(isset($_REQUEST['by'])) {
 
 			$by			=	strip_tags($db->real_escape_string($_REQUEST["by"]));
@@ -19,17 +27,17 @@ class ShowComponents {
 			}
 
 			if($by == 'price' or $by == 'pins' or $by == 'quantity') {
-				$GetDataComponentsAll = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE owner = ".$owner." ORDER by ".$by." +0 ".$order."";
+				$GetDataComponentsAll = $same_q.$owner." ORDER by ".$by." +0 ".$order."";
 			}
 			elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd') {
-				$GetDataComponentsAll = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE owner = ".$owner." ORDER by ".$by." ".$order."";
+				$GetDataComponentsAll = $same_q.$owner." ORDER by ".$by." ".$order."";
 			}
 			else {
-				$GetDataComponentsAll = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE owner = ".$owner." ORDER by name ASC";
+				$GetDataComponentsAll = $same_q.$owner." ORDER by name ASC";
 			}
 		}
 		else {
-			$GetDataComponentsAll = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE owner = ".$owner." ORDER by name ASC";
+			$GetDataComponentsAll = $same_q.$owner." ORDER by name ASC";
 		}
 
 
@@ -154,7 +162,7 @@ class ShowComponents {
         global $db;
 		require_once('include/login/auth.php');
 		$owner = $_SESSION['SESS_MEMBER_ID'];
-
+        $same_q = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category BETWEEN ";
 		if(isset($_REQUEST['cat'])) {
 
 			$cat = (int)$_REQUEST['cat'];
@@ -178,17 +186,17 @@ class ShowComponents {
 				}
 
 				if($by == 'price' or $by == 'pins' or $by == 'quantity') {
-					$ComponentsCategory = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category BETWEEN ".$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by ".$by." +0 ".$order."";
+					$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by ".$by." +0 ".$order."";
 				}
 				elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd') {
-					$ComponentsCategory = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category BETWEEN ".$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by ".$by." ".$order."";
+					$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by ".$by." ".$order."";
 				}
 				else {
-					$ComponentsCategory = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category BETWEEN ".$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by name ASC";
+					$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by name ASC";
 				}
 			}
 			else {
-				$ComponentsCategory = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category BETWEEN ".$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by name ASC";
+				$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by name ASC";
 			}
 
 			$sql_exec_component = $db->query($ComponentsCategory);
@@ -291,7 +299,7 @@ class ShowComponents {
 
 
 		if(isset($_REQUEST['subcat'])) {
-
+            $same_q2= "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category = ";
 			$subcat = (int)$_REQUEST['subcat'];
 
 			$CategoryName = "SELECT * FROM category_sub WHERE id = ".$subcat."";
@@ -310,17 +318,17 @@ class ShowComponents {
 				}
 
 				if($by == 'price' or $by == 'pins' or $by == 'quantity') {
-					$ComponentsCategory = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category = ".$subcat." AND owner = ".$owner." ORDER by ".$by." +0 ".$order."";
+					$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by ".$by." +0 ".$order."";
 				}
 				elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd') {
-					$ComponentsCategory = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category = ".$subcat." AND owner = ".$owner." ORDER by ".$by." ".$order."";
+					$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by ".$by." ".$order."";
 				}
 				else {
-					$ComponentsCategory = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category = ".$subcat." AND owner = ".$owner." ORDER by name ASC";
+					$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by name ASC";
 				}
 			}
 			else{
-				$ComponentsCategory = "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category = ".$subcat." AND owner = ".$owner." ORDER by name ASC";
+				$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by name ASC";
 			}
 
 			$sql_exec_component = $db->query($ComponentsCategory);
