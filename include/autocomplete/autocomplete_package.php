@@ -1,6 +1,6 @@
 <?php
 require_once "../Class_DB.php";;
-$q = strtolower($_GET["q"]);
+$q = strtolower($_REQUEST["q"]);
 if (!$q) return;
 
 $sql = "select DISTINCT package as package from data where package LIKE '%$q%' ";

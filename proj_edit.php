@@ -4,7 +4,7 @@
 	require_once('include/debug.php');
 	
 	$owner 	= 	$_SESSION['SESS_MEMBER_ID'];
-	$id 	= 	(int)$_GET['proj_id'];
+	$id 	= 	(int)$_REQUEST['proj_id'];
 	
 	$GetDataProjectName = $db->query("SELECT * FROM projects WHERE project_id = ".$id." AND project_owner = ".$owner."");
 	$executesql = $db->fetch_assoc($GetDataProjectName);

@@ -59,8 +59,8 @@
 							<tr>
 								<th></th>
 								<th><a href="?by=name&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}

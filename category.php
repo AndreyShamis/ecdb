@@ -50,7 +50,7 @@
 						<tr>
 							<th></th>
 							<th><a href="?
-								<?php	if(isset($_GET['subcat'])) {
+								<?php	if(isset($_REQUEST['subcat'])) {
 											echo 'subcat';
 										}
 										else {
@@ -58,16 +58,16 @@
 										}
 								?>
 								=
-								<?php	if(isset($_GET['cat'])) {
-											echo $_GET['cat'];
+								<?php	if(isset($_REQUEST['cat'])) {
+											echo $_REQUEST['cat'];
 										}
-										if(isset($_GET['subcat'])) {
-											echo $_GET['subcat'];
+										if(isset($_REQUEST['subcat'])) {
+											echo $_REQUEST['subcat'];
 										}
 								?>
 								&by=name&order=
-								<?php	if(isset($_GET['order'])) {
-											$order = $_GET['order'];
+								<?php	if(isset($_REQUEST['order'])) {
+											$order = $_REQUEST['order'];
 											if ($order == 'asc') {	
 												echo 'desc'; 
 											} 
@@ -81,20 +81,20 @@
 								?>
 								">Name</a></th>
 
-							<th><a href="?<?php if(isset($_GET['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_GET['cat'])){ echo $_GET['cat'];} if(isset($_GET['subcat'])){ echo $_GET['subcat'];} ?>&by=category&order=<?php if(isset($_GET['order'])) { $order = $_GET['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Category</a></th>
+							<th><a href="?<?php if(isset($_REQUEST['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_REQUEST['cat'])){ echo $_REQUEST['cat'];} if(isset($_REQUEST['subcat'])){ echo $_REQUEST['subcat'];} ?>&by=category&order=<?php if(isset($_REQUEST['order'])) { $order = $_REQUEST['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Category</a></th>
 
-							<th><a href="?<?php if(isset($_GET['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_GET['cat'])){ echo $_GET['cat'];} if(isset($_GET['subcat'])){ echo $_GET['subcat'];} ?>&by=package&order=<?php if(isset($_GET['order'])) { $order = $_GET['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Package</a></th>
+							<th><a href="?<?php if(isset($_REQUEST['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_REQUEST['cat'])){ echo $_REQUEST['cat'];} if(isset($_REQUEST['subcat'])){ echo $_REQUEST['subcat'];} ?>&by=package&order=<?php if(isset($_REQUEST['order'])) { $order = $_REQUEST['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Package</a></th>
 
-							<th><a href="?<?php if(isset($_GET['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_GET['cat'])){ echo $_GET['cat'];} if(isset($_GET['subcat'])){ echo $_GET['subcat'];} ?>&by=pins&order=<?php if(isset($_GET['order'])) { $order = $_GET['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Pins</a></th>
+							<th><a href="?<?php if(isset($_REQUEST['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_REQUEST['cat'])){ echo $_REQUEST['cat'];} if(isset($_REQUEST['subcat'])){ echo $_REQUEST['subcat'];} ?>&by=pins&order=<?php if(isset($_REQUEST['order'])) { $order = $_REQUEST['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Pins</a></th>
 
 							<th>Image</th>
 							<th>Datasheet</th>
 
-							<th><a href="?<?php if(isset($_GET['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_GET['cat'])){ echo $_GET['cat'];} if(isset($_GET['subcat'])){ echo $_GET['subcat'];} ?>&by=smd&order=<?php if(isset($_GET['order'])) { $order = $_GET['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">SMD</a></th>
+							<th><a href="?<?php if(isset($_REQUEST['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_REQUEST['cat'])){ echo $_REQUEST['cat'];} if(isset($_REQUEST['subcat'])){ echo $_REQUEST['subcat'];} ?>&by=smd&order=<?php if(isset($_REQUEST['order'])) { $order = $_REQUEST['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">SMD</a></th>
 
-							<th><a href="?<?php if(isset($_GET['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_GET['cat'])){ echo $_GET['cat'];} if(isset($_GET['subcat'])){ echo $_GET['subcat'];} ?>&by=price&order=<?php if(isset($_GET['order'])) { $order = $_GET['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Price</a></th>
+							<th><a href="?<?php if(isset($_REQUEST['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_REQUEST['cat'])){ echo $_REQUEST['cat'];} if(isset($_REQUEST['subcat'])){ echo $_REQUEST['subcat'];} ?>&by=price&order=<?php if(isset($_REQUEST['order'])) { $order = $_REQUEST['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Price</a></th>
 
-							<th><a href="?<?php if(isset($_GET['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_GET['cat'])){ echo $_GET['cat'];} if(isset($_GET['subcat'])){ echo $_GET['subcat'];} ?>&by=quantity&order=<?php if(isset($_GET['order'])) { $order = $_GET['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Quantity</a></th>
+							<th><a href="?<?php if(isset($_REQUEST['subcat'])) {echo 'subcat';}else {echo 'cat';} ?>=<?php if(isset($_REQUEST['cat'])){ echo $_REQUEST['cat'];} if(isset($_REQUEST['subcat'])){ echo $_REQUEST['subcat'];} ?>&by=quantity&order=<?php if(isset($_REQUEST['order'])) { $order = $_REQUEST['order']; if ($order == 'asc') {	echo 'desc'; } else { echo 'asc'; } } else { echo 'desc'; } ?>">Quantity</a></th>
 							<th>Comment</th>
 						</tr>
 					</thead>

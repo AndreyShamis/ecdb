@@ -3,7 +3,7 @@ class ProjectShowPrice {
 	public function ProjectSumTotal() {
         global $db;
 		
-		$project_id     = (int)$_GET["proj_id"];
+		$project_id     = (int)$_REQUEST["proj_id"];
 		$owner          = $_SESSION['SESS_MEMBER_ID'];
 		
 		$GetPersonal    = $db->query("SELECT currency FROM members WHERE member_id = ".$owner."");

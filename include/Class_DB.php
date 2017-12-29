@@ -263,6 +263,3 @@ class DataBase{
 }
 
 $db = new DataBase("localhost","{USER_NAME}","{USER_PASSWORD}","ecdb");
-
-
-

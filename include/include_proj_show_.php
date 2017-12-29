@@ -6,9 +6,9 @@ class ProjectShowComponents {
 
 		$owner = $_SESSION['SESS_MEMBER_ID'];
 
-		if(isset($_GET['proj_id'])) {
+		if(isset($_REQUEST['proj_id'])) {
 		
-			$proj_id            = $db->real_escape_string((int)$_GET['proj_id']);
+			$proj_id            = $db->real_escape_string((int)$_REQUEST['proj_id']);
 			
 			$GetComponentIDs    = "SELECT component_id FROM projects_data WHERE owner = ".$owner." AND project_id = ".$proj_id." ORDER by name ASC";
 			$sql_exec_GetComponentIDs = $db->query($GetComponentIDs);
@@ -18,10 +18,10 @@ class ProjectShowComponents {
 				$ComponentID = $showDetails_ComponentIDs['component_id'];
 			}
 
-			if(isset($_GET['by'])) {
+			if(isset($_REQUEST['by'])) {
 			
-				$by         = $_GET["by"];
-				$order      = $_GET["order"];
+				$by         = $_REQUEST["by"];
+				$order      = $_REQUEST["order"];
 				
 				$bysql      = $db->real_escape_string($by);
 				$ordersql   = $db->real_escape_string($order);

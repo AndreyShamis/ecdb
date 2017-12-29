@@ -6,8 +6,8 @@ class NameHead {
 		require_once('include/login/auth.php');
 		$owner = $_SESSION['SESS_MEMBER_ID'];
 
-		if(isset($_GET['subcat'])) {
-			$headcat = (int)$_GET['subcat'];
+		if(isset($_REQUEST['subcat'])) {
+			$headcat = (int)$_REQUEST['subcat'];
 
 			if ($headcat < 999) {
 				$cat = substr($headcat, -3, 1);
@@ -22,7 +22,7 @@ class NameHead {
 
 		echo '<li>';
 		echo '<a href="."';
-		if(empty($_GET['cat']) && empty($_GET['subcat'])){
+		if(empty($_REQUEST['cat']) && empty($_REQUEST['subcat'])){
 			echo ' class="selected"';
 		}
 		else{
@@ -39,16 +39,16 @@ class NameHead {
 			echo '" ';
 
 			// Makes the head category "selected" when that category is viewed.
-			if(isset($_GET['cat'])) {
-				$cat = (int)$_GET['cat'];
+			if(isset($_REQUEST['cat'])) {
+				$cat = (int)$_REQUEST['cat'];
 				if ($ShowDetailsCatname['id'] == $cat) {
 					echo 'class="selected"';
 				}
 			}
 
 			// Makes the head category "selected" when a sub category of that category is viewed.
-			if(isset($_GET['subcat'])) {
-				$headcat = (int)$_GET['subcat'];
+			if(isset($_REQUEST['subcat'])) {
+				$headcat = (int)$_REQUEST['subcat'];
 
 				if ($headcat < 999) {
 					$cat = substr($headcat, -3, 1);

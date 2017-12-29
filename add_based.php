@@ -4,7 +4,7 @@
 	require_once('include/debug.php');
 	
 	$owner 	= 	$_SESSION['SESS_MEMBER_ID'];
-	$id 	= 	(int)$_GET['based'];
+	$id 	= 	(int)$_REQUEST['based'];
 
 	// Get data from the old component to inherit.
 	$GetDataComponent   = $db->query("SELECT * FROM data WHERE id = ".$id." AND owner = ".$owner." ");

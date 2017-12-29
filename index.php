@@ -3,7 +3,7 @@
 	require_once('include/login/auth.php');
 	require_once('include/debug.php');
 
-	$order = isset($_GET['order']) ? $_GET['order'] : "desc";
+	$order = isset($_REQUEST['order']) ? $_REQUEST['order'] : "desc";
 ?>
 <!DOCTYPE HTML>
 <html>

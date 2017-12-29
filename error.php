@@ -3,8 +3,8 @@
 	require_once('include/login/auth.php');
 	require_once('include/debug.php');
 	
-	if(isset($_GET['id'])) {
-		$id = (int)$_GET['id'];
+	if(isset($_REQUEST['id'])) {
+		$id = (int)$_REQUEST['id'];
 		
 		if ($id == 1) {
 			$message = "You don't have permission to view this component.";
@@ -19,7 +19,7 @@
 			$message = "";
 		}
 	}
-	if (empty($_GET['id'])) {
+	if (empty($_REQUEST['id'])) {
 		$message = 'Error!';
 	}
 ?>

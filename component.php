@@ -4,7 +4,7 @@
 	require_once('include/debug.php');
 
 	$owner 	= 	$_SESSION['SESS_MEMBER_ID'];
-	$id 	= 	(int)$_GET['view'];
+	$id 	= 	(int)$_REQUEST['view'];
 
 	$GetDataComponent = $db->query("SELECT * FROM data WHERE id = ".$id." AND owner = ".$owner."");
 	$executesql = $db->fetch_assoc($GetDataComponent);

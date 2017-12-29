@@ -35,8 +35,8 @@
 								<th>
 								</th>
 								<th><a href="?by=name&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -50,8 +50,8 @@
 								?>">Name</a>
 								</th>
 								<th><a href="?by=manufacturer&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -65,8 +65,8 @@
 								?>">Manufacturer</a>
 								</th>
 								<th><a href="?by=package&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -80,7 +80,7 @@
 								?>">Package</a>
 								</th>
 								<th><a href="?by=smd&order=<?php 
-								if(isset($_GET['order'])){
+								if(isset($_REQUEST['order'])){
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -94,8 +94,8 @@
 								?>">SMD</a>
 								</th>
 								<th><a href="?by=price&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -109,8 +109,8 @@
 								?>">Price</a>
 								</th>
 								<th><a href="?by=quantity&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -124,8 +124,8 @@
 								?>">Quantity</a>
 								</th>
 								<th><a href="?by=quantity_order&order=<?php 
-								if(isset($_GET['quantity_order'])){
-									$quantity_order = $_GET['quantity_order'];
+								if(isset($_REQUEST['quantity_order'])){
+									$quantity_order = $_REQUEST['quantity_order'];
 									if ($quantity_order == 'asc'){
 										echo 'desc';
 									}

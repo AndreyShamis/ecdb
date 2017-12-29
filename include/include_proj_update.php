@@ -7,7 +7,7 @@ class ProjAdd {
 		if(isset($_POST['submit'])) {
 			$owner			=	$_SESSION['SESS_MEMBER_ID'];
 			$name 			= 	$db->real_escape_string($_POST['name']);
-			$id 			= 	(int)$_GET['proj_id'];
+			$id 			= 	(int)$_REQUEST['proj_id'];
 			
 			if ($name == '') {
 				echo 'You have to specify a name!';

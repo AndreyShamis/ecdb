@@ -31,9 +31,9 @@
 						<tr>
 							<th></th>
 							<th>
-								<a href="?q=<?php echo $_GET['q']; ?>&by=name&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								<a href="?q=<?php echo $_REQUEST['q']; ?>&by=name&order=<?php
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -47,9 +47,9 @@
 								?>">Name</a>
 							</th>
 							<th>
-								<a href="?q=<?php echo $_GET['q']; ?>&by=category&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								<a href="?q=<?php echo $_REQUEST['q']; ?>&by=category&order=<?php
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -63,9 +63,9 @@
 								?>">Category</a>
 							</th>
 							<th>
-								<a href="?q=<?php echo $_GET['q']; ?>&by=manufacturer&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								<a href="?q=<?php echo $_REQUEST['q']; ?>&by=manufacturer&order=<?php
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -79,9 +79,9 @@
 								?>">Manufacturer</a>
 							</th>
 							<th>
-								<a href="?q=<?php echo $_GET['q']; ?>&by=package&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								<a href="?q=<?php echo $_REQUEST['q']; ?>&by=package&order=<?php
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -95,9 +95,9 @@
 								?>">Package</a>
 							</th>
 							<th>
-								<a href="?q=<?php echo $_GET['q']; ?>&by=pins&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								<a href="?q=<?php echo $_REQUEST['q']; ?>&by=pins&order=<?php
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -117,8 +117,8 @@
 								Datasheet
 							</th>
 							<th>
-								<a href="?q=<?php echo $_GET['q']; ?>&by=smd&order=<?php 
-								if(isset($_GET['order'])){
+								<a href="?q=<?php echo $_REQUEST['q']; ?>&by=smd&order=<?php
+								if(isset($_REQUEST['order'])){
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -132,9 +132,9 @@
 								?>">SMD</a>
 							</th>
 							<th>
-								<a href="?q=<?php echo $_GET['q']; ?>&by=price&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								<a href="?q=<?php echo $_REQUEST['q']; ?>&by=price&order=<?php
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}
@@ -148,9 +148,9 @@
 								?>">Price</a>
 							</th>
 							<th>
-								<a href="?q=<?php echo $_GET['q']; ?>&by=quantity&order=<?php 
-								if(isset($_GET['order'])){
-									$order = $_GET['order'];
+								<a href="?q=<?php echo $_REQUEST['q']; ?>&by=quantity&order=<?php
+								if(isset($_REQUEST['order'])){
+									$order = $_REQUEST['order'];
 									if ($order == 'asc'){
 										echo 'desc';
 									}

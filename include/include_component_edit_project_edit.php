@@ -4,7 +4,7 @@ class EditProj {
         global $db;
 		require_once('include/login/auth.php');
 		
-		$id		= 	(int)$_GET['edit'];
+		$id		= 	(int)$_REQUEST['edit'];
 		
 		$query = "SELECT projects_data.projects_data_project_id, projects_data.projects_data_quantity, projects_data.projects_data_project_id, projects_data.projects_data_component_id, projects.project_id, projects.project_name FROM projects_data, projects WHERE projects_data.projects_data_project_id = projects.project_id AND projects_data.projects_data_component_id = '$id' LIMIT 1";
 	 

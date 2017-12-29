@@ -6,10 +6,10 @@ class ShowComponents {
 
 		$owner = $_SESSION['SESS_MEMBER_ID'];
 
-		if(isset($_GET['by'])) {
+		if(isset($_REQUEST['by'])) {
 
-			$by			=	strip_tags($db->real_escape_string($_GET["by"]));
-			$order_q	=	strip_tags($db->real_escape_string($_GET["order"]));
+			$by			=	strip_tags($db->real_escape_string($_REQUEST["by"]));
+			$order_q	=	strip_tags($db->real_escape_string($_REQUEST["order"]));
 
 			if($order_q == 'desc' or $order_q == 'asc'){
 				$order = $order_q;
@@ -95,11 +95,7 @@ class ShowComponents {
 			}
 
 			else{
-				echo '<a class="thumbnail" href="';
-				echo $image;
-				echo '"><span class="icon medium picture"></span><span class="imgB"><img src="';
-				echo $image;
-				echo '" /></span></a></td>';
+				echo '<a class="thumbnail" href="'. $image. '"><span class="icon medium picture"></span><span class="imgB"><img src="'. $image. '" /></span></a></td>';
 			}
 
 			echo '<td>';
@@ -107,11 +103,8 @@ class ShowComponents {
 			if ($datasheet==""){
 				echo "-";
 			}
-
 			else{
-				echo '<a href="';
-				echo $datasheet;
-				echo '"  target="_blank"><span class="icon medium document"></span></a></td>';
+				echo '<a href="'. $datasheet. '" target="_blank"><span class="icon medium document"></span></a></td>';
 			}
 
 			echo "<td>";
@@ -146,9 +139,7 @@ class ShowComponents {
 
 			$comment = $showDetails['comment'];
 			if ($comment==""){
-				echo '<td class="comment"><div>';
-				echo "-";
-				echo '</span></div></td>';
+				echo '<td class="comment"><div>-</span></div></td>';
 			}
 			else{
 				echo '<td class="comment"><div><span class="icon medium spechBubbleSq"></span><span class="comment">';
@@ -164,9 +155,9 @@ class ShowComponents {
 		require_once('include/login/auth.php');
 		$owner = $_SESSION['SESS_MEMBER_ID'];
 
-		if(isset($_GET['cat'])) {
+		if(isset($_REQUEST['cat'])) {
 
-			$cat = (int)$_GET['cat'];
+			$cat = (int)$_REQUEST['cat'];
 			$subcatfrom = $cat*100;
 			$subcatto = $subcatfrom+99;
 
@@ -174,10 +165,10 @@ class ShowComponents {
 			$CategoryName = "SELECT * FROM category_sub WHERE id = ".$cat."";
 			$sql_exec_catname = $db->query($CategoryName);
 
-			if(isset($_GET['by'])) {
+			if(isset($_REQUEST['by'])) {
 
-				$by			=	strip_tags($db->real_escape_string($_GET["by"]));
-				$order_q	=	strip_tags($db->real_escape_string($_GET["order"]));
+				$by			=	strip_tags($db->real_escape_string($_REQUEST["by"]));
+				$order_q	=	strip_tags($db->real_escape_string($_REQUEST["order"]));
 
 				if($order_q == 'desc' or $order_q == 'asc') {
 					$order = $order_q;
@@ -204,17 +195,8 @@ class ShowComponents {
 
 			while ($showDetails = $db->fetch_assoc($sql_exec_component)) {
 				echo "<tr>";
-
-				echo '<td class="edit"><a href="edit_component.php?edit=';
-				echo $showDetails['id'];
-				echo '"><span class="icon medium pencil"></span></a></td>';
-
-				echo '<td><a href="component.php?view=';
-				echo $showDetails['id'];
-				echo '">';
-				echo $showDetails['name'];
-				echo "</a></td>";
-
+				echo '<td class="edit"><a href="edit_component.php?edit='. $showDetails['id']. '"><span class="icon medium pencil"></span></a></td>';
+				echo '<td><a href="component.php?view='. $showDetails['id'] . '">'. $showDetails['name']. "</a></td>";
 				echo "<td>";
 				$subcatid = $showDetails['category'];
 
@@ -254,11 +236,7 @@ class ShowComponents {
 					echo "-";
 				}
 				else{
-					echo '<a class="thumbnail" href="';
-					echo $image;
-					echo '"><span class="icon medium picture"></span><span class="imgB"><img src="';
-					echo $image;
-					echo '" /></span></a></td>';
+					echo '<a class="thumbnail" href="'. $image. '"><span class="icon medium picture"></span><span class="imgB"><img src="'. $image. '" /></span></a></td>';
 				}
 
 				echo '<td>';
@@ -267,9 +245,7 @@ class ShowComponents {
 					echo "-";
 				}
 				else{
-					echo '<a href="';
-					echo $datasheet;
-					echo '" target="_blank"><span class="icon medium document"></span></a></td>';
+					echo '<a href="'. $datasheet. '" target="_blank"><span class="icon medium document"></span></a></td>';
 				}
 
 				echo "<td>";
@@ -304,31 +280,27 @@ class ShowComponents {
 
 				$comment = $showDetails['comment'];
 				if ($comment == ""){
-					echo '<td class="comment"><div>';
-					echo "-";
-					echo '</span></div></td>';
+					echo '<td class="comment"><div>-</span></div></td>';
 				}
 				else{
-					echo '<td class="comment"><div><span class="icon medium spechBubbleSq"></span><span class="comment">';
-					echo $showDetails['comment'];
-					echo '</span></div></td>';
+					echo '<td class="comment"><div><span class="icon medium spechBubbleSq"></span><span class="comment">'. $showDetails['comment']. '</span></div></td>';
 				}
 				echo "</tr>";
 			}
 		}
 
 
-		if(isset($_GET['subcat'])) {
+		if(isset($_REQUEST['subcat'])) {
 
-			$subcat = (int)$_GET['subcat'];
+			$subcat = (int)$_REQUEST['subcat'];
 
 			$CategoryName = "SELECT * FROM category_sub WHERE id = ".$subcat."";
 			$sql_exec_catname = $db->query($CategoryName);
 
-			if(isset($_GET['by'])) {
+			if(isset($_REQUEST['by'])) {
 
-				$by			=	strip_tags($db->real_escape_string($_GET["by"]));
-				$order_q	=	strip_tags($db->real_escape_string($_GET["order"]));
+				$by			=	strip_tags($db->real_escape_string($_REQUEST["by"]));
+				$order_q	=	strip_tags($db->real_escape_string($_REQUEST["order"]));
 
 				if($order_q == 'desc' or $order_q == 'asc') {
 					$order = $order_q;
@@ -464,13 +436,13 @@ class ShowComponents {
 	}
 	public function Search() {
         global $db;
-		if(isset($_GET['q'])) {
+		if(isset($_REQUEST['q'])) {
 
 			require_once('include/login/auth.php');
 
 			$owner = $_SESSION['SESS_MEMBER_ID'];
 
-			$query = $db->real_escape_string($_GET['q']);
+			$query = $db->real_escape_string($_REQUEST['q']);
 
 			$query1 = strtoupper($query);
 			$query2 = strip_tags($query1);
@@ -485,9 +457,9 @@ class ShowComponents {
 			else {
 
 
-				if (isset($_GET['by'])){
-					$by			=	strip_tags($db->real_escape_string($_GET["by"]));
-					$order_q	=	strip_tags($db->real_escape_string($_GET["order"]));
+				if (isset($_REQUEST['by'])){
+					$by			=	strip_tags($db->real_escape_string($_REQUEST["by"]));
+					$order_q	=	strip_tags($db->real_escape_string($_REQUEST["order"]));
 
 					if($order_q == 'desc' or $order_q == 'asc'){
 						$order = $order_q;
@@ -520,18 +492,8 @@ class ShowComponents {
 
 				while($showDetails = $db->fetch_assoc($sql_exec)) {
 					echo "<tr>";
-
-					echo '<td class="edit"><a href="edit_component.php?edit=';
-					echo $showDetails['id'];
-					echo '"><img src="img/pencil.png" alt="Edit"/></a></td>';
-
-					echo '<td><a href="component.php?view=';
-					echo $showDetails['id'];
-					echo '">';
-
-					echo $showDetails['name'];
-					echo "</a></td>";
-
+					echo '<td class="edit"><a href="edit_component.php?edit=' . $showDetails['id'] . '"><img src="img/pencil.png" alt="Edit"/></a></td>';
+					echo '<td><a href="component.php?view=' . $showDetails['id'] . '">' . $showDetails['name'] . "</a></td>";
 					echo "<td>";
 						if ($showDetails['category'] < 999) {
 							$head_cat_id = substr($showDetails['category'], -3, 1);
@@ -588,11 +550,7 @@ class ShowComponents {
 					}
 
 					else{
-						echo '<a class="thumbnail" href="';
-						echo $image;
-						echo '"><span class="icon medium picture"></span><span class="imgB"><img src="';
-						echo $image;
-						echo '" /></span></a></td>';
+						echo '<a class="thumbnail" href="' . $image. '"><span class="icon medium picture"></span><span class="imgB"><img src="'. $image. '" /></span></a></td>';
 					}
 
 					echo '<td>';
@@ -632,14 +590,10 @@ class ShowComponents {
 
 					$comment = $showDetails['comment'];
 					if ($comment == ""){
-						echo '<td class="comment"><div>';
-						echo "-";
-						echo '</span></div></td>';
+						echo '<td class="comment"><div>-</span></div></td>';
 					}
 					else{
-						echo '<td class="comment"><div><span class="icon medium spechBubbleSq"></span><span class="comment">';
-						echo $showDetails['comment'];
-						echo '</span></div></td>';
+						echo '<td class="comment"><div><span class="icon medium spechBubbleSq"></span><span class="comment">'. $showDetails['comment']. '</span></div></td>';
 					}
 					echo "</tr>";
 				}
@@ -654,11 +608,11 @@ class ShowComponents {
 		if(isset($_POST['submit']) or isset($_POST['update'])) {
 			$owner				=	$_SESSION['SESS_MEMBER_ID'];
 
-			if (empty($_GET['edit'])) {
+			if (empty($_REQUEST['edit'])) {
 				$id				=	'';
 			}
 			else{
-				$id				= 	(int)$_GET['edit'];
+				$id				= 	(int)$_REQUEST['edit'];
 			}
 
 			if (empty($_POST['name'])) {
