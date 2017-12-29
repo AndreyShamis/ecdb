@@ -6,69 +6,64 @@
  */
 class DataBase{
     //  Here provide your information for MySQL connection
-    private $db_host = "localhost";
+    protected $db_host  = "localhost";
+    protected $db_user  = "ecdb";
+    protected $db_pass  = "password";
+    protected $db_db    = "ecdb";
 
     /**
      * @return string
      */
-    public function getDbHost()
-    {
+    public function getDbHost(){
         return $this->db_host;
     }
 
     /**
      * @param string $db_host
      */
-    public function setDbHost($db_host)
-    {
+    public function setDbHost($db_host){
         $this->db_host = $db_host;
     }
 
     /**
      * @return string
      */
-    public function getDbUser()
-    {
+    public function getDbUser(){
         return $this->db_user;
     }
 
     /**
      * @param string $db_user
      */
-    public function setDbUser($db_user)
-    {
+    public function setDbUser($db_user){
         $this->db_user = $db_user;
     }
 
     /**
      * @return string
      */
-    public function getDbPass()
-    {
+    public function getDbPass(){
         return $this->db_pass;
     }
 
     /**
      * @param string $db_pass
      */
-    public function setDbPass($db_pass)
-    {
+    public function setDbPass($db_pass){
         $this->db_pass = $db_pass;
     }
 
     /**
      * @return string
      */
-    public function getDbName()
-    {
+    public function getDbName(){
         return $this->db_db;
     }
 
     /**
      * @param string $db_db
      */
-    public function setDbName($db_db)
-    {
+    public function setDbName($db_db){
         $this->db_db = $db_db;
     }
 
@@ -84,8 +79,7 @@ class DataBase{
      * @param $string -  input
      * @return string - output
      */
-    public function real_escape_string($string)
-    {
+    public function real_escape_string($string){
         $ret = "";
         try{
             $ret = mysqli_real_escape_string($this->link,$string);
@@ -103,8 +97,7 @@ class DataBase{
      * @param string $pass
      * @param string $db
      */
-    public function __construct($host="localhost",$user="ecdb",$pass="",$db="ecdb")
-    {
+    public function __construct($host="localhost",$user="ecdb",$pass="",$db="ecdb"){
 
         $this->setDbHost($host);
         $this->setDbUser($user);
@@ -131,6 +124,9 @@ class DataBase{
         mysqli_set_charset($this->link,"utf8");
     }
 
+    /**
+     * Set error disable
+     */
     public function disableDebug(){
         $this->m_DebugErrors = 0;
     }
@@ -144,8 +140,8 @@ class DataBase{
 
     /**
      * Performs a query on the database
-     * @param The query string. $sql
-     * @return Returns FALSE on failure. For successful SELECT, SHOW,
+     * @param $sql string The query string
+     * @return bool|mysqli_result  FALSE on failure. For successful SELECT, SHOW,
      * DESCRIBE or EXPLAIN queries mysqli_query() will return a mysqli_result
      * object. For other successful queries mysqli_query() will return TRUE.
      */
@@ -161,17 +157,17 @@ class DataBase{
 
     /**
      * Gets the number of rows in a result
-     * @param Procedural style only $result
-     * @return Returns number of rows in the result set.
+     * @param mysqli_result $result A result set identifier returned by mysqli_query(),style only $result
+     * @return int : number of rows in the result set.
      */
     public function num_rows($result){
-        return $this->count($result);
+        return (int)$this->count($result);
     }
 
     /**
      * Gets the number of rows in a result
-     * @param Procedural style only $result
-     * @return Returns number of rows in the result set.
+     * @param mysqli_result style only $result
+     * @return int number of rows in the result set.
      */
     public function count($result){
         if($result == null){
@@ -182,8 +178,8 @@ class DataBase{
 
     /**
      *  Fetch a result row as an associative, a numeric array, or both
-     * @param Procedural style only $result
-     * @return Returns an array of strings that corresponds to the fetched row or NULL if there are no more rows in resultset.
+     * @param mysqli_result style only $result
+     * @return array an array of strings that corresponds to the fetched row or NULL if there are no more rows in resultset.
      */
     public function fetch_array($result){
         return mysqli_fetch_array($result);
@@ -191,8 +187,8 @@ class DataBase{
 
     /**
      * Fetch a result row as an associative array
-     * @param Procedural style only $result
-     * @return Returns an associative array of strings representing the
+     * @param mysqli_result style only $result
+     * @return array an associative array of strings representing the
      * fetched row in the result set, where each key in the array represents
      * the name of one of the result set's columns or NULL if there are
      * no more rows in resultset.
@@ -203,7 +199,7 @@ class DataBase{
 
     /**
      * Returns a string description of the last error
-     * @return A string that describes the error. An empty string if no error occurred.
+     * @return  string that describes the error. An empty string if no error occurred.
      */
     public function error(){
         return mysqli_error($this->link);
@@ -211,7 +207,7 @@ class DataBase{
 
     /**
      * Returns the error code for the most recent function call
-     * @return An error code value for the last call, if it failed. zero means no error occurred.
+     * @return int An error code value for the last call, if it failed. zero means no error occurred.
      */
     public function errno(){
         return mysqli_errno($this->link);
@@ -236,7 +232,7 @@ class DataBase{
 
     /**
      * Returns the auto generated id used in the last query
-     * @return The value of the AUTO_INCREMENT field that was updated by the
+     * @return int value of the AUTO_INCREMENT field that was updated by the
      * previous query. Returns zero if there was no previous query on the
      * connection or if the query did not update an AUTO_INCREMENT value.
      */
@@ -254,12 +250,13 @@ class DataBase{
 
     /***
      * mysqli_result::free -- mysqli_free_result — Frees the memory associated with a result
-     * @param $result No value is returned.
+     * @param mysqli_result $result No value is returned.
+     * @return void
      */
     public function free_result($result){
-        return mysqli_free_result($result);
+        mysqli_free_result($result);
     }
 
 }
 
-$db = new DataBase("localhost","{USER_NAME}","{USER_PASSWORD}","ecdb");
+$db = new DataBase("localhost","ecdb","1","ecdb");
