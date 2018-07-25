@@ -1,11 +1,11 @@
 <?php
-	require_once('include/Class_DB.php');
-	require_once('include/login/auth.php');
-	require_once('include/debug.php');
+	require_once 'include/Class_DB.php';
+	require_once 'include/login/auth.php';
+	require_once 'include/debug.php';
 	
 	// Get some personal data. ID, currency, measurement unit
 	$owner 	= 	$_SESSION['SESS_MEMBER_ID'];
-	$GetPersonal = $db->query("SELECT currency, measurement FROM members WHERE member_id = ".$owner."");
+	$GetPersonal = $db->query('SELECT currency, measurement FROM members WHERE member_id = \'' .(int)$owner. '\'');
 	$personal = $db->fetch_assoc($GetPersonal);
 ?>
 <!DOCTYPE HTML> 
@@ -51,7 +51,7 @@
             });
         });
     </script>
-    <?php include_once("include/analytics.php") ?>
+    <?php include_once 'include/analytics.php' ?>
     </head>
 	<body  onLoad="document.forms.add.name.focus()">
     <div id="wrapper">
@@ -64,7 +64,7 @@
         <!-- Main content -->
         <div id="content">
             <?php
-                include('include/include.php');
+                include 'include/include.php';
                 $Add = new ShowComponents;
                 $Add->Add();
             ?>
@@ -72,7 +72,7 @@
                 <div class="textBoxInput">
                     <label class="keyWord boldText">Comment</label>
                     <div class="text">
-                        <textarea name="comment" rows="4"><?php if(isset($_POST['submit'])) { echo $_POST['comment']; } ?></textarea>
+                        <textarea name="comment" rows="14" style="resize: both !important;"><?php if(isset($_POST['submit'])) { echo $_POST['comment']; } ?></textarea>
                     </div>
                 </div>
                 <table class="globalTables leftAlign noHover" cellpadding="0" cellspacing="0">
@@ -87,7 +87,7 @@
                                 <select name="category">
                                 <?php
                                     // Include the category selector menu.
-                                    include('include/include_component_add_category_menu.php');
+                                    include 'include/include_component_add_category_menu.php';
                                     $MenuCat = new AddMenuCat;
                                     $MenuCat->MenuCat();
                                 ?>

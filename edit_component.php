@@ -1,19 +1,19 @@
 <?php
-require_once('include/Class_DB.php');
-require_once('include/login/auth.php');
-require_once('include/debug.php');
+require_once 'include/Class_DB.php';
+require_once 'include/login/auth.php';
+require_once 'include/debug.php';
 
 $owner 	= 	$_SESSION['SESS_MEMBER_ID'];
 $id 	= 	(int)$_REQUEST['edit'];
 
-$GetDataComponent = $db->query("SELECT * FROM data WHERE id = ".$id." AND owner = ".$owner."");
+$GetDataComponent = $db->query('SELECT * FROM data WHERE id = ' .$id. ' AND owner = ' .$owner);
 $executesql = $db->fetch_assoc($GetDataComponent);
 
-$GetPersonal = $db->query("SELECT currency, measurement FROM members WHERE member_id = ".$owner."");
+$GetPersonal = $db->query('SELECT currency, measurement FROM members WHERE member_id = ' .$owner);
 $personal = $db->fetch_assoc($GetPersonal);
 
 if ($executesql['owner'] !== $owner) {
-    header("Location: error.php?id=2");
+    header('Location: error.php?id=2');
 }
 
 if ($executesql['category'] < 999) {
@@ -23,25 +23,25 @@ else {
     $head_cat_id = substr($executesql['category'], -4, 2);
 }
 
-$GetHeadCatName = $db->query("SELECT * FROM category_head WHERE id = ".$head_cat_id."");
+$GetHeadCatName = $db->query('SELECT * FROM category_head WHERE id = ' . (int)$head_cat_id);
 $executesql_head_catname = $db->fetch_assoc($GetHeadCatName);
 
 $sub_cat_id = $executesql['category'];
 
-$GetSubCatName = $db->query("SELECT * FROM category_sub WHERE id = ".$sub_cat_id."");
+$GetSubCatName = $db->query('SELECT * FROM category_sub WHERE id = ' . (int)$sub_cat_id);
 $executesql_sub_catname = $db->fetch_assoc($GetSubCatName);
 
-$GetDataComponentsAll = "SELECT * FROM category_sub";
+$GetDataComponentsAll = 'SELECT * FROM category_sub';
 $sql_exec = $db->query($GetDataComponentsAll);
 
 if(isset($_POST['delete'])) {
-    $sqlDeleteComopnent = "DELETE FROM data WHERE id = ".$id." "; // TODO LIMIT
+    $sqlDeleteComopnent = 'DELETE FROM data WHERE id = ' . $id . ' LIMIT 1';
     $sql_exec_component_delete = $db->query($sqlDeleteComopnent);
 
     $sqlDeleteProject = "DELETE FROM projects_data WHERE projects_data_component_id = '$id'";
     $sql_exec_project_delete = $db->query($sqlDeleteProject);
 
-    header("Location: .");
+    header('Location: .');
 }
 
 if(isset($_POST['based'])) {
@@ -79,7 +79,7 @@ if (isset($_POST['orderquant_decrease'])) {
     $quantity_before	=	$_POST['orderquant'];
     $quantity_after 	= 	$quantity_before - 1;
 
-    $sql = "UPDATE data SET order_quantity = '".$quantity_after."' WHERE id = ".$id." ";
+    $sql = "UPDATE data SET order_quantity = '".$quantity_after."' WHERE id = ".$id;
     $sql_exec = $db->query($sql);
     header("location: " . $_SERVER['REQUEST_URI']);
 }
@@ -94,7 +94,7 @@ if (isset($_POST['orderquant_decrease'])) {
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="apple-touch-icon" href="img/apple.png" />
     <title>Edit component - <?php echo $executesql['name']; ?> - ecDB</title>
-    <?php include_once("include/analytics.php") ?>
+    <?php include_once "include/analytics.php" ?>
 </head>
 <body>
     <div id="wrapper">
@@ -113,7 +113,7 @@ if (isset($_POST['orderquant_decrease'])) {
                 <a href="component.php?view=<?php echo $executesql['id']; ?>"><?php echo $executesql['name']; ?></a>
             </h1>
             <?php
-                include('include/include.php');
+                include 'include/include.php';
                 $Add = new ShowComponents;
                 $Add->Add();
             ?>
@@ -121,7 +121,7 @@ if (isset($_POST['orderquant_decrease'])) {
                 <div class="textBoxInput">
                     <label class="keyWord boldText">Comment </label>
                     <div class="text"><!--cols="104"-->
-                        <textarea name="comment" rows="14" style="width: 99%;"><?php echo $executesql['comment']; ?></textarea>
+                        <textarea name="comment" rows="14" style="width: 99%; resize: both !important;"><?php echo $executesql['comment']; ?></textarea>
                     </div>
                 </div>
                 <table class="globalTables leftAlign noHover" cellpadding="0" cellspacing="0">
@@ -135,7 +135,7 @@ if (isset($_POST['orderquant_decrease'])) {
                             <td>
                                 <select name="category">
                                 <?php
-                                $HeadCategoryNameQuery = "SELECT * FROM category_head ORDER by name ASC";
+                                $HeadCategoryNameQuery = 'SELECT * FROM category_head ORDER by name ASC';
                                 $sql_exec_headcat = $db->query($HeadCategoryNameQuery);
 
                                 while ($HeadCategory = $db->fetch_assoc($sql_exec_headcat)) {
@@ -149,7 +149,7 @@ if (isset($_POST['orderquant_decrease'])) {
                                     $subcatfrom = $HeadCategory['id'] * 100;
                                     $subcatto   = $subcatfrom + 99;
 
-                                    $SubCategoryNameQuery   = "SELECT * FROM category_sub WHERE id BETWEEN ".$subcatfrom." AND ".$subcatto." ORDER by name ASC";
+                                    $SubCategoryNameQuery   = 'SELECT * FROM category_sub WHERE id BETWEEN ' .$subcatfrom. ' AND ' .$subcatto. ' ORDER by name ASC';
                                     $sql_exec_subcat        = $db->query($SubCategoryNameQuery);
 
                                     while ($SubCategory = $db->fetch_assoc($sql_exec_subcat)) {
@@ -314,7 +314,7 @@ if (isset($_POST['orderquant_decrease'])) {
                             <td class="boldText">Quantity</td>
                             <?php
 
-                            $sql       = "SELECT projects_data_component_id FROM projects_data WHERE projects_data_component_id = ".(int)$_REQUEST['edit']." ";
+                            $sql       = 'SELECT projects_data_component_id FROM projects_data WHERE projects_data_component_id = ' .(int)$_REQUEST['edit'];
                             $sql_echo   = $db->query($sql);
 
                             if ($db->count($sql_echo) == 0) {
@@ -332,7 +332,7 @@ if (isset($_POST['orderquant_decrease'])) {
                             <td>
                                 <select name="project">
                                 <?php
-                                    include('include/include_component_edit_project_add.php');
+                                    include 'include/include_component_edit_project_add.php';
                                     $MenuProj = new AddMenuProj;
                                     $MenuProj->MenuProj();
                                 ?>
@@ -343,7 +343,7 @@ if (isset($_POST['orderquant_decrease'])) {
                             </td>
                             <td>
                             <?php
-                                include('include/include_component_edit_project_edit.php');
+                                include 'include/include_component_edit_project_edit.php';
                                 $MenuProj = new EditProj;
                                 $MenuProj->MenuProj();
                             ?>
