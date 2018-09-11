@@ -240,10 +240,9 @@ class ShowComponents {
 
 				echo '<td>';
 				$image = $showDetails['url1'];
-				if ($image==""){
-					echo "-";
-				}
-				else{
+				if ($image == '') {
+					echo '-';
+				} else {
 					echo '<a class="thumbnail" href="'. $image. '"><span class="icon medium picture"></span><span class="imgB"><img src="'. $image. '" /></span></a></td>';
 				}
 
@@ -381,7 +380,7 @@ class ShowComponents {
 				else{
 					echo '<a class="thumbnail" href="';
 					echo $image;
-					echo '"><img src="img/picture.png" /><span class="imgB"><img src="';
+					echo '"><img style="width: 20px;" src="'. $image .'" /><span class="imgB"><img src="';
 					echo $image;
 					echo '" /></span></a></td>';
 				}
