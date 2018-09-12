@@ -27,10 +27,10 @@ class ShowComponents {
 			}
 
 			if($by == 'price' or $by == 'pins' or $by == 'quantity') {
-				$GetDataComponentsAll = $same_q.$owner." ORDER by ".$by." +0 ".$order."";
+				$GetDataComponentsAll = $same_q.$owner." ORDER by ".$by." +0 ".$order.'';
 			}
 			elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd') {
-				$GetDataComponentsAll = $same_q.$owner." ORDER by ".$by." ".$order."";
+				$GetDataComponentsAll = $same_q.$owner." ORDER by ".$by." ".$order.'';
 			}
 			else {
 				$GetDataComponentsAll = $same_q.$owner." ORDER by name ASC";
@@ -56,7 +56,7 @@ class ShowComponents {
 			echo $showDetails['name'];
 			echo "</a></td>";
 
-			echo "<td>";
+			echo '<td>';
 
 				if ($showDetails['category'] < 999) {
 					$head_cat_id = substr($showDetails['category'], -3, 1);
@@ -66,7 +66,7 @@ class ShowComponents {
 				}
 				$subcatid = $showDetails['category'];
 
-				$CategoryName = "SELECT * FROM category_head WHERE id = ".$head_cat_id."";
+				$CategoryName = "SELECT * FROM category_head WHERE id = ".$head_cat_id.'';
 				$sql_exec_catname = $db->query($CategoryName);
 
 				while($showDetailsCat = $db->fetch_assoc($sql_exec_catname)) {
@@ -74,32 +74,32 @@ class ShowComponents {
 				}
 
 			echo "<a href='category.php?cat=$head_cat_id'>$catname</a>";
-			echo "</td>";
+			echo '</td>';
 
-			echo "<td>";
+			echo '<td>';
 			$package = $showDetails['package'];
-				if ($package == ""){
-					echo "-";
+				if ($package == ''){
+					echo '-';
 				}
 				else{
 					echo $package;
 				}
-			echo "</td>";
+			echo '</td>';
 
-			echo "<td>";
+			echo '<td>';
 			$pins = $showDetails['pins'];
-				if ($pins == ""){
-					echo "-";
+				if ($pins == ''){
+					echo '-';
 				}
 				else{
 					echo $pins;
 				}
-			echo "</td>";
+			echo '</td>';
 
 			echo '<td>';
 			$image = $showDetails['url1'];
-			if ($image==""){
-				echo "-";
+			if ($image==''){
+				echo '-';
 			}
 
 			else{
@@ -108,14 +108,14 @@ class ShowComponents {
 
 			echo '<td>';
 			$datasheet = $showDetails['datasheet'];
-			if ($datasheet==""){
-				echo "-";
+			if ($datasheet==''){
+				echo '-';
 			}
 			else{
 				echo '<a href="'. $datasheet. '" target="_blank"><span class="icon medium document"></span></a></td>';
 			}
 
-			echo "<td>";
+			echo '<td>';
 			$smd = $showDetails['smd'];
 				if ($smd == "No"){
 					echo '<span class="icon medium checkboxUnchecked"></span>';
@@ -123,30 +123,30 @@ class ShowComponents {
 				else{
 					echo '<span class="icon medium checkboxChecked"></span>';
 				}
-			echo "</td>";
+			echo '</td>';
 
-			echo "<td>";
+			echo '<td>';
 			$price = $showDetails['price'];
-				if ($price == ""){
-					echo "-";
+				if ($price == ''){
+					echo '-';
 				}
 				else{
 					echo $price;
 				}
-			echo "</td>";
+			echo '</td>';
 
-			echo "<td>";
+			echo '<td>';
 			$quantity = $showDetails['quantity'];
-				if ($quantity == ""){
-					echo "-";
+				if ($quantity == ''){
+					echo '-';
 				}
 				else{
 					echo $quantity;
 				}
-			echo "</td>";
+			echo '</td>';
 
 			$comment = $showDetails['comment'];
-			if ($comment==""){
+			if ($comment==''){
 				echo '<td class="comment"><div>-</span></div></td>';
 			}
 			else{
@@ -170,7 +170,7 @@ class ShowComponents {
 			$subcatto = $subcatfrom+99;
 
 
-			$CategoryName = "SELECT * FROM category_sub WHERE id = ".$cat."";
+			$CategoryName = "SELECT * FROM category_sub WHERE id = ".$cat.'';
 			$sql_exec_catname = $db->query($CategoryName);
 
 			if(isset($_REQUEST['by'])) {
@@ -180,22 +180,18 @@ class ShowComponents {
 
 				if($order_q == 'desc' or $order_q == 'asc') {
 					$order = $order_q;
-				}
-				else {
+				} else {
 					$order = 'asc';
 				}
 
 				if($by == 'price' or $by == 'pins' or $by == 'quantity') {
-					$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by ".$by." +0 ".$order."";
-				}
-				elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd') {
-					$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by ".$by." ".$order."";
-				}
-				else {
+					$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by ".$by." +0 ".$order.'';
+				} elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd') {
+					$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by ".$by." ".$order.'';
+				} else {
 					$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by name ASC";
 				}
-			}
-			else {
+			} else {
 				$ComponentsCategory = $same_q.$subcatfrom." AND ".$subcatto." AND owner = ".$owner." ORDER by name ASC";
 			}
 
@@ -205,10 +201,10 @@ class ShowComponents {
 				echo "<tr>";
 				echo '<td class="edit"><a href="edit_component.php?edit='. $showDetails['id']. '"><span class="icon medium pencil"></span></a></td>';
 				echo '<td><a href="component.php?view='. $showDetails['id'] . '">'. $showDetails['name']. "</a></td>";
-				echo "<td>";
+				echo '<td>';
 				$subcatid = $showDetails['category'];
 
-				$CategoryName = "SELECT * FROM category_sub WHERE id = ".$subcatid."";
+				$CategoryName = "SELECT * FROM category_sub WHERE id = ". (int)$subcatid;
 				$sql_exec_catname = $db->query($CategoryName);
 
 				while($showDetailsCat = $db->fetch_assoc($sql_exec_catname)) {
@@ -216,83 +212,79 @@ class ShowComponents {
 				}
 
 				echo "<a href='category.php?subcat=$subcatid'>$catname</a>";
-				echo "</td>";
+				echo '</td>';
 
-				echo "<td>";
+				echo '<td>';
 				$package = $showDetails['package'];
-					if ($package == ""){
-						echo "-";
-					}
-					else{
+					if ($package == '') {
+						echo '-';
+					} else {
 						echo $package;
 					}
-				echo "</td>";
+				echo '</td>';
 
-				echo "<td>";
+				echo '<td>';
 				$pins = $showDetails['pins'];
-					if ($pins == ""){
-						echo "-";
-					}
-					else{
+					if ($pins == '') {
+						echo '-';
+					} else {
 						echo $pins;
 					}
-				echo "</td>";
+				echo '</td>';
 
 				echo '<td>';
 				$image = $showDetails['url1'];
 				if ($image == '') {
 					echo '-';
 				} else {
-					echo '<a class="thumbnail" href="'. $image. '"><span class="icon medium picture"></span><span class="imgB"><img src="'. $image. '" /></span></a></td>';
+					echo '<a class="thumbnail" href="'. $image. '">';
+					echo '<img style="width: 20px;" src="'. $image .'" />';
+					//echo '<span class="icon medium picture"></span>';
+					echo '<span class="imgB"><img src="'. $image. '" /></span></a></td>';
 				}
 
 				echo '<td>';
 				$datasheet = $showDetails['datasheet'];
-				if ($datasheet==""){
-					echo "-";
-				}
-				else{
+				if ($datasheet == '') {
+					echo '-';
+				} else {
 					echo '<a href="'. $datasheet. '" target="_blank"><span class="icon medium document"></span></a></td>';
 				}
 
-				echo "<td>";
+				echo '<td>';
 				$smd = $showDetails['smd'];
-					if ($smd == "No"){
+					if ($smd == 'No') {
 						echo '<span class="icon medium checkboxUnchecked"></span>';
-					}
-					else{
+					} else {
 						echo '<span class="icon medium checkboxChecked"></span>';
 					}
-				echo "</td>";
+				echo '</td>';
 
-				echo "<td>";
+				echo '<td>';
 				$price = $showDetails['price'];
-					if ($price == ""){
-						echo "-";
-					}
-					else{
+					if ($price == '') {
+						echo '-';
+					} else {
 						echo $price;
 					}
-				echo "</td>";
+				echo '</td>';
 
-				echo "<td>";
+				echo '<td>';
 				$quantity = $showDetails['quantity'];
-					if ($quantity == ""){
-						echo "-";
-					}
-					else{
+					if ($quantity == '') {
+						echo '-';
+					} else {
 						echo $quantity;
 					}
-				echo "</td>";
+				echo '</td>';
 
 				$comment = $showDetails['comment'];
-				if ($comment == ""){
+				if ($comment == '') {
 					echo '<td class="comment"><div>-</span></div></td>';
-				}
-				else{
+				} else {
 					echo '<td class="comment"><div><span class="icon medium spechBubbleSq"></span><span class="comment">'. $showDetails['comment']. '</span></div></td>';
 				}
-				echo "</tr>";
+				echo '</tr>';
 			}
 		}
 
@@ -301,7 +293,7 @@ class ShowComponents {
             $same_q2= "SELECT id, name, category, package, pins, datasheet, url1, smd, price, quantity, comment FROM data WHERE category = ";
 			$subcat = (int)$_REQUEST['subcat'];
 
-			$CategoryName = "SELECT * FROM category_sub WHERE id = ".$subcat."";
+			$CategoryName = "SELECT * FROM category_sub WHERE id = ".$subcat.'';
 			$sql_exec_catname = $db->query($CategoryName);
 
 			if(isset($_REQUEST['by'])) {
@@ -317,10 +309,10 @@ class ShowComponents {
 				}
 
 				if($by == 'price' or $by == 'pins' or $by == 'quantity') {
-					$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by ".$by." +0 ".$order."";
+					$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by ".$by." +0 ".$order.'';
 				}
 				elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd') {
-					$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by ".$by." ".$order."";
+					$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by ".$by." ".$order.'';
 				}
 				else {
 					$ComponentsCategory = $same_q2.$subcat." AND owner = ".$owner." ORDER by name ASC";
@@ -345,39 +337,36 @@ class ShowComponents {
 				echo $showDetails['name'];
 				echo "</a></td>";
 
-				echo "<td>";
+				echo '<td>';
 					while($showDetailsCat = $db->fetch_assoc($sql_exec_catname)) {
 						$catname = $showDetailsCat['name'];
 					}
 					echo $catname;
-				echo "</td>";
+				echo '</td>';
 
-				echo "<td>";
+				echo '<td>';
 				$package = $showDetails['package'];
-					if ($package == ""){
-						echo "-";
-					}
-					else{
+					if ($package == '') {
+						echo '-';
+					} else {
 						echo $package;
 					}
-				echo "</td>";
+				echo '</td>';
 
-				echo "<td>";
+				echo '<td>';
 				$pins = $showDetails['pins'];
-					if ($pins == ""){
-						echo "-";
-					}
-					else{
-						echo $pins;
-					}
-				echo "</td>";
+                if ($pins == '') {
+                    echo '-';
+                } else {
+                    echo $pins;
+                }
+				echo '</td>';
 
 				echo '<td>';
 				$image = $showDetails['url1'];
-				if ($image==""){
-					echo "-";
-				}
-				else{
+				if ($image == '') {
+					echo '-';
+				} else {
 					echo '<a class="thumbnail" href="';
 					echo $image;
 					echo '"><img style="width: 20px;" src="'. $image .'" /><span class="imgB"><img src="';
@@ -387,52 +376,47 @@ class ShowComponents {
 
 				echo '<td>';
 				$datasheet = $showDetails['datasheet'];
-				if ($datasheet==""){
-					echo "-";
-				}
-				else{
+				if ($datasheet == '') {
+					echo '-';
+				} else {
 					echo '<a href="';
 					echo $datasheet;
 					echo '" target="_blank"><img src="img/document.png" alt="Download PDF"/></a></td>';
 				}
 
-				echo "<td>";
+				echo '<td>';
 				$smd = $showDetails['smd'];
-					if ($smd == "No"){
+					if ($smd == 'No') {
 						echo '<img src="img/checkbox_unchecked.png">';
-					}
-					else{
+					} else {
 						echo '<img src="img/checkbox_checked.png">';
 					}
-				echo "</td>";
+				echo '</td>';
 
-				echo "<td>";
+				echo '<td>';
 				$price = $showDetails['price'];
-					if ($price == ""){
-						echo "-";
-					}
-					else{
+					if ($price == '') {
+						echo '-';
+					} else {
 						echo $price;
 					}
-				echo "</td>";
+				echo '</td>';
 
-				echo "<td>";
+				echo '<td>';
 				$quantity = $showDetails['quantity'];
-					if ($quantity == ""){
-						echo "-";
-					}
-					else{
+					if ($quantity == '') {
+						echo '-';
+					} else {
 						echo $quantity;
 					}
-				echo "</td>";
+				echo '</td>';
 
 				$comment = $showDetails['comment'];
-				if ($comment == ""){
+				if ($comment == '') {
 					echo '<td class="comment"><div>';
-					echo "-";
+					echo '-';
 					echo '</span></div></td>';
-				}
-				else{
+				} else {
 					echo '<td class="comment"><div><span class="icon medium spechBubbleSq"></span><span class="comment">';
 					echo $showDetails['comment'];
 					echo '</span></div></td>';
@@ -455,37 +439,31 @@ class ShowComponents {
 			$query2 = strip_tags($query1);
 			$find = trim($query2);
 
-
-			if ($find == "") {
+			if ($find == '') {
 				echo '<div class="message red">';
-					echo "You forgot to enter a search term.";
+				echo "You forgot to enter a search term.";
 				echo '</div>';
-			}
-			else {
+			} else {
 
 
 				if (isset($_REQUEST['by'])){
 					$by			=	strip_tags($db->real_escape_string($_REQUEST["by"]));
 					$order_q	=	strip_tags($db->real_escape_string($_REQUEST["order"]));
 
-					if($order_q == 'desc' or $order_q == 'asc'){
+					if($order_q == 'desc' or $order_q == 'asc') {
 						$order = $order_q;
-					}
-					else{
+					} else {
 						$order = 'asc';
 					}
 
 					if($by == 'price' or $by == 'pins' or $by == 'quantity') {
 						$SearchQuery = "SELECT * FROM data WHERE (name LIKE'%$find%' OR package LIKE'%$find%' OR manufacturer LIKE'%$find%' OR pins LIKE'%$find%' OR location LIKE'%$find%' OR comment LIKE'%$find%') AND owner = $owner ORDER by $by +0 $order";
-					}
-					elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd' or $by =='manufacturer') {
+					} elseif($by == 'name' or $by == 'category' or $by =='package' or $by =='smd' or $by =='manufacturer') {
 						$SearchQuery = "SELECT * FROM data WHERE (name LIKE'%$find%' OR package LIKE'%$find%' OR manufacturer LIKE'%$find%' OR pins LIKE'%$find%' OR location LIKE'%$find%' OR comment LIKE'%$find%') AND owner = $owner ORDER by $by $order";
-					}
-					else {
+					} else {
 						$SearchQuery = "SELECT * FROM data WHERE (name LIKE'%$find%' OR package LIKE'%$find%' OR manufacturer LIKE'%$find%' OR pins LIKE'%$find%' OR location LIKE'%$find%' OR comment LIKE'%$find%') AND owner = $owner ORDER by name ASC";
 					}
-				}
-				else{
+				} else {
 					$SearchQuery = "SELECT * FROM data WHERE (name LIKE'%$find%' OR package LIKE'%$find%' OR manufacturer LIKE'%$find%' OR pins LIKE'%$find%' OR location LIKE'%$find%' OR comment LIKE'%$find%') AND owner = $owner ORDER by name ASC";
 				}
 
@@ -501,16 +479,15 @@ class ShowComponents {
 					echo "<tr>";
 					echo '<td class="edit"><a href="edit_component.php?edit=' . $showDetails['id'] . '"><img src="img/pencil.png" alt="Edit"/></a></td>';
 					echo '<td><a href="component.php?view=' . $showDetails['id'] . '">' . $showDetails['name'] . "</a></td>";
-					echo "<td>";
+					echo '<td>';
 						if ($showDetails['category'] < 999) {
 							$head_cat_id = substr($showDetails['category'], -3, 1);
-						}
-						else {
+						} else {
 							$head_cat_id = substr($showDetails['category'], -4, 2);
 						}
 						$subcatid = $showDetails['category'];
 
-						$CategoryName = "SELECT * FROM category_head WHERE id = ".$head_cat_id."";
+						$CategoryName = "SELECT * FROM category_head WHERE id = ".$head_cat_id.'';
 						$sql_exec_catname = $db->query($CategoryName);
 
 						while($showDetailsCat = $db->fetch_assoc($sql_exec_catname)) {
@@ -518,91 +495,81 @@ class ShowComponents {
 						}
 
 					echo $catname;
-					echo "</td>";
+					echo '</td>';
 
-					echo "<td>";
+					echo '<td>';
 					$manufacturer = $showDetails['manufacturer'];
-						if ($manufacturer == ""){
-							echo "-";
-						}
-						else{
+						if ($manufacturer == '') {
+							echo '-';
+						} else {
 							echo $manufacturer;
 						}
-					echo "</td>";
+					echo '</td>';
 
-					echo "<td>";
+					echo '<td>';
 					$package = $showDetails['package'];
-						if ($package == ""){
-							echo "-";
-						}
-						else{
+						if ($package == '') {
+							echo '-';
+						} else {
 							echo $package;
 						}
-					echo "</td>";
+					echo '</td>';
 
-					echo "<td>";
+					echo '<td>';
 					$pins = $showDetails['pins'];
-						if ($pins == ""){
-							echo "-";
-						}
-						else{
+						if ($pins == '') {
+							echo '-';
+						} else {
 							echo $pins;
 						}
-					echo "</td>";
+					echo '</td>';
 
 					echo '<td>';
 					$image = $showDetails['url1'];
-					if ($image==""){
-						echo "-";
-					}
-
-					else{
+					if ($image == '') {
+						echo '-';
+					} else {
 						echo '<a class="thumbnail" href="' . $image. '"><span class="icon medium picture"></span><span class="imgB"><img src="'. $image. '" /></span></a></td>';
 					}
 
 					echo '<td>';
 					$datasheet = $showDetails['datasheet'];
-					if ($datasheet==""){
-						echo "-";
-					}
-					else{
-						echo '<a href="';
-						echo $datasheet;
-						echo '" target="_blank""><span class="icon medium document"></span></a></td>';
+					if ($datasheet=='') {
+						echo '-';
+					} else {
+						echo "<a href='" . $datasheet . "' target='_blank'>";
+						echo "<span class='icon medium document'></span></a></td>";
 					}
 
-					echo "<td>";
+					echo '<td>';
 					$smd = $showDetails['smd'];
-						if ($smd == "No"){
+						if ($smd == 'No') {
 							echo '<img src="img/checkbox_unchecked.png">';
-						}
-						else{
+						} else {
 							echo '<img src="img/checkbox_checked.png">';
 						}
-					echo "</td>";
+					echo '</td>';
 
-					echo "<td>";
+					echo '<td>';
 					$price = $showDetails['price'];
-						if ($price == ""){
-							echo "-";
-						}
-						else{
+						if ($price == '') {
+							echo '-';
+						} else {
 							echo $price;
 						}
-					echo "</td>";
+					echo '</td>';
 
-					echo "<td>";
+					echo '<td>';
 					echo $showDetails['quantity'];
-					echo "</td>";
+					echo '</td>';
 
 					$comment = $showDetails['comment'];
-					if ($comment == ""){
+					if ($comment == '') {
 						echo '<td class="comment"><div>-</span></div></td>';
-					}
-					else{
+					} else {
 						echo '<td class="comment"><div><span class="icon medium spechBubbleSq"></span><span class="comment">'. $showDetails['comment']. '</span></div></td>';
 					}
-					echo "</tr>";
+					echo '</tr>';
 				}
 			}
 		}
