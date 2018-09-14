@@ -30,16 +30,14 @@ require_once('include/debug.php');
                         <th></th>
                         <th>
                             <a href="?q=<?php echo $_REQUEST['q']; ?>&by=name&order=<?php
-                            if(isset($_REQUEST['order'])){
+                            if(isset($_REQUEST['order'])) {
                                 $order = $_REQUEST['order'];
-                                if ($order == 'asc'){
+                                if ($order == 'asc') {
                                     echo 'desc';
-                                }
-                                else {
+                                } else {
                                     echo 'asc';
                                 }
-                            }
-                            else {
+                            } else {
                                 echo 'desc';
                             }
                             ?>">Name</a>
@@ -48,62 +46,54 @@ require_once('include/debug.php');
                             <a href="?q=<?php echo $_REQUEST['q']; ?>&by=category&order=<?php
                             if(isset($_REQUEST['order'])){
                                 $order = $_REQUEST['order'];
-                                if ($order == 'asc'){
+                                if ($order == 'asc') {
                                     echo 'desc';
-                                }
-                                else {
+                                } else {
                                     echo 'asc';
                                 }
-                            }
-                            else {
+                            } else {
                                 echo 'asc';
                             }
                             ?>">Category</a>
                         </th>
                         <th>
                             <a href="?q=<?php echo $_REQUEST['q']; ?>&by=manufacturer&order=<?php
-                            if(isset($_REQUEST['order'])){
+                            if(isset($_REQUEST['order'])) {
                                 $order = $_REQUEST['order'];
-                                if ($order == 'asc'){
+                                if ($order == 'asc') {
                                     echo 'desc';
-                                }
-                                else {
+                                } else {
                                     echo 'asc';
                                 }
-                            }
-                            else {
+                            } else {
                                 echo 'asc';
                             }
                             ?>">Manufacturer</a>
                         </th>
                         <th>
                             <a href="?q=<?php echo $_REQUEST['q']; ?>&by=package&order=<?php
-                            if(isset($_REQUEST['order'])){
+                            if(isset($_REQUEST['order'])) {
                                 $order = $_REQUEST['order'];
-                                if ($order == 'asc'){
+                                if ($order == 'asc') {
                                     echo 'desc';
-                                }
-                                else {
+                                } else {
                                     echo 'asc';
                                 }
-                            }
-                            else {
+                            } else {
                                 echo 'asc';
                             }
                             ?>">Package</a>
                         </th>
                         <th>
                             <a href="?q=<?php echo $_REQUEST['q']; ?>&by=pins&order=<?php
-                            if(isset($_REQUEST['order'])){
+                            if(isset($_REQUEST['order'])) {
                                 $order = $_REQUEST['order'];
-                                if ($order == 'asc'){
+                                if ($order == 'asc') {
                                     echo 'desc';
-                                }
-                                else {
+                                } else {
                                     echo 'asc';
                                 }
-                            }
-                            else {
+                            } else {
                                 echo 'asc';
                             }
                             ?>">Pins</a>
@@ -112,47 +102,41 @@ require_once('include/debug.php');
                         <th>Datasheet</th>
                         <th>
                             <a href="?q=<?php echo $_REQUEST['q']; ?>&by=smd&order=<?php
-                            if(isset($_REQUEST['order'])){
-                                if ($order == 'asc'){
+                            if(isset($_REQUEST['order'])) {
+                                if ($order == 'asc') {
                                     echo 'desc';
-                                }
-                                else {
+                                } else {
                                     echo 'asc';
                                 }
-                            }
-                            else {
+                            } else {
                                 echo 'asc';
                             }
                             ?>">SMD</a>
                         </th>
                         <th>
                             <a href="?q=<?php echo $_REQUEST['q']; ?>&by=price&order=<?php
-                            if(isset($_REQUEST['order'])){
+                            if(isset($_REQUEST['order'])) {
                                 $order = $_REQUEST['order'];
-                                if ($order == 'asc'){
+                                if ($order == 'asc') {
                                     echo 'desc';
-                                }
-                                else {
+                                } else {
                                     echo 'asc';
                                 }
-                            }
-                            else {
+                            } else {
                                 echo 'asc';
                             }
                             ?>">Price</a>
                         </th>
                         <th>
                             <a href="?q=<?php echo $_REQUEST['q']; ?>&by=quantity&order=<?php
-                            if(isset($_REQUEST['order'])){
+                            if(isset($_REQUEST['order'])) {
                                 $order = $_REQUEST['order'];
-                                if ($order == 'asc'){
+                                if ($order == 'asc') {
                                     echo 'desc';
-                                }
-                                else {
+                                } else {
                                     echo 'asc';
                                 }
-                            }
-                            else {
+                            } else {
                                 echo 'asc';
                             }
                             ?>">Quantity</a>

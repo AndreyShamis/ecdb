@@ -367,11 +367,10 @@ class ShowComponents {
 				if ($image == '') {
 					echo '-';
 				} else {
-					echo '<a class="thumbnail" href="';
-					echo $image;
-					echo '"><img style="width: 20px;" src="'. $image .'" /><span class="imgB"><img src="';
-					echo $image;
-					echo '" /></span></a></td>';
+                    echo '<a class="thumbnail" href="'. $image . '">';
+                    echo '<img style="width: 20px;" src="'. $image .'" />';
+                    echo '<span class="imgB"><img src="' . $image . '"/>';
+                    echo '</span></a></td>';
 				}
 
 				echo '<td>';
@@ -379,20 +378,19 @@ class ShowComponents {
 				if ($datasheet == '') {
 					echo '-';
 				} else {
-					echo '<a href="';
-					echo $datasheet;
-					echo '" target="_blank"><img src="img/document.png" alt="Download PDF"/></a></td>';
+					echo '<a href="' . $datasheet . '" target="_blank">';
+					echo '<img src="img/document.png" alt="Download PDF"/></a></td>';
 				}
 
 				echo '<td>';
 				$smd = $showDetails['smd'];
-					if ($smd == 'No') {
-						echo '<img src="img/checkbox_unchecked.png">';
+					if ($smd === 'No') {
+						$src = 'img/checkbox_unchecked.png';
 					} else {
-						echo '<img src="img/checkbox_checked.png">';
+						$src = 'img/checkbox_checked.png';
 					}
+                echo '<img src="'. $src .'">';
 				echo '</td>';
-
 				echo '<td>';
 				$price = $showDetails['price'];
 					if ($price == '') {
@@ -496,7 +494,6 @@ class ShowComponents {
 
 					echo $catname;
 					echo '</td>';
-
 					echo '<td>';
 					$manufacturer = $showDetails['manufacturer'];
 						if ($manufacturer == '') {
@@ -505,7 +502,6 @@ class ShowComponents {
 							echo $manufacturer;
 						}
 					echo '</td>';
-
 					echo '<td>';
 					$package = $showDetails['package'];
 						if ($package == '') {
@@ -523,13 +519,18 @@ class ShowComponents {
 							echo $pins;
 						}
 					echo '</td>';
-
 					echo '<td>';
 					$image = $showDetails['url1'];
 					if ($image == '') {
 						echo '-';
 					} else {
-						echo '<a class="thumbnail" href="' . $image. '"><span class="icon medium picture"></span><span class="imgB"><img src="'. $image. '" /></span></a></td>';
+                        echo '<a class="thumbnail" href="'. $image . '">';
+                        echo '<img style="width: 30px;" src="'. $image .'" />';
+                        echo '<span class="imgB"><img src="' . $image . '"/>';
+                        echo '</span></a></td>';
+//						echo '<a class="thumbnail" href="' . $image. '">';
+//						echo '<span class="icon medium picture"></span>';
+//						echo '<span class="imgB"><img src="'. $image. '" /></span></a></td>';
 					}
 
 					echo '<td>';
@@ -540,7 +541,6 @@ class ShowComponents {
 						echo "<a href='" . $datasheet . "' target='_blank'>";
 						echo "<span class='icon medium document'></span></a></td>";
 					}
-
 					echo '<td>';
 					$smd = $showDetails['smd'];
 						if ($smd == 'No') {
@@ -584,36 +584,31 @@ class ShowComponents {
 
 			if (empty($_REQUEST['edit'])) {
 				$id				=	'';
-			}
-			else{
+			} else {
 				$id				= 	(int)$_REQUEST['edit'];
 			}
 
 			if (empty($_POST['name'])) {
 				$name = '';
-			}
-			else{
+			} else {
 				$name			=	strip_tags($db->real_escape_string($_POST['name']));
 			}
 
 			if (empty($_POST['quantity'])) {
 				$quantity = 0;
-			}
-			else{
+			} else {
 				$quantity			=	str_replace(',', '.', strip_tags($db->real_escape_string($_POST['quantity'])));
 			}
 
 			if (empty($_POST['category'])) {
 				$category = '';
-			}
-			else{
+			} else {
 				$category		=	strip_tags($db->real_escape_string($_POST['category']));
 			}
 
 			if (empty($_POST['project'])) {
 				$project = '';
-			}
-			else{
+			} else {
 				$project		=	strip_tags($db->real_escape_string($_POST['project']));
 			}
 
@@ -643,68 +638,55 @@ class ShowComponents {
 				echo '<div class="message red">';
 				echo 'You have to specify a name!';
 				echo '</div>';
-			}
-			elseif ($category == '') {
+			} else if ($category == '') {
 				echo '<div class="message red">';
 				echo 'You have to choose a category!';
 				echo '</div>';
-			}
-			elseif (!empty($project_quantity) && empty($project)) {
+			} else if (!empty($project_quantity) && empty($project)) {
 				echo '<div class="message red">';
 				echo 'You have to choose a project!';
 				echo '</div>';
-			}
-			elseif (!empty($project) && empty($project_quantity)) {
+			} else if (!empty($project) && empty($project_quantity)) {
 				echo '<div class="message red">';
 				echo 'You have to specify a quantity for this component to add to the project!';
 				echo '</div>';
-			}
-			elseif (strlen($comment) >= 2500) {
+			} else if (strlen($comment) >= 2500) {
 				echo '<div class="message red">';
 				echo 'Max 2500 characters in the comment!';
 				echo '</div>';
-			}
-			elseif (!empty($_POST['quantity']) && !is_numeric($quantity)) {
+			} else if (!empty($_POST['quantity']) && !is_numeric($quantity)) {
 				echo '<div class="message red">';
 				echo 'The quantity must only be a number!';
 				echo '</div>';
-			}
-			elseif (!empty($_POST['pins']) && !is_numeric($pins)) {
+			} else if (!empty($_POST['pins']) && !is_numeric($pins)) {
 				echo '<div class="message red">';
 				echo 'The pin-count must only be a number!';
 				echo '</div>';
-			}
-			elseif (!empty($_POST['price']) && !is_numeric($price)) {
+			} else if (!empty($_POST['price']) && !is_numeric($price)) {
 				echo '<div class="message red">';
 				echo 'The price must only be a number!';
 				echo '</div>';
-			}
-			elseif (!empty($_POST['orderquant']) && !is_numeric($order_quantity)) {
+			} else if (!empty($_POST['orderquant']) && !is_numeric($order_quantity)) {
 				echo '<div class="message red">';
 				echo 'The order quantity must only be a number!';
 				echo '</div>';
-			}
-			elseif (!empty($_POST['weight']) && !is_numeric($weight)) {
+			} else if (!empty($_POST['weight']) && !is_numeric($weight)) {
 				echo '<div class="message red">';
 				echo 'The weight must only be a number!';
 				echo '</div>';
-			}
-			elseif (!empty($_POST['width']) && !is_numeric($width)) {
+			} else if (!empty($_POST['width']) && !is_numeric($width)) {
 				echo '<div class="message red">';
 				echo 'The width must only be a number!';
 				echo '</div>';
-			}
-			elseif (!empty($_POST['depth']) && !is_numeric($depth)) {
+			} else if (!empty($_POST['depth']) && !is_numeric($depth)) {
 				echo '<div class="message red">';
 				echo 'The depth must only be a number!';
 				echo '</div>';
-			}
-			elseif (!empty($_POST['height']) && !is_numeric($height)) {
+			} else if (!empty($_POST['height']) && !is_numeric($height)) {
 				echo '<div class="message red">';
 				echo 'The height must only be a number!';
 				echo '</div>';
-			}
-			else {
+			} else {
 				if(isset($_POST['submit'])) {
 					$sql="INSERT into data (owner, name, manufacturer, package, pins, smd, quantity, location, scrap, width, height, depth, weight, datasheet, comment, category, url1, url2, url3, url4, price, public, order_quantity)
 					VALUES
