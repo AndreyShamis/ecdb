@@ -77,7 +77,7 @@ $sql_exec = $db->query($GetDataComponentsAll);
                 <div class="textBoxInput">
                     <label class="keyWord boldText">Comment</label>
                     <div class="text">
-                        <textarea name="comment" rows="4"><?php echo $executesql['comment']; ?></textarea>
+                        <textarea name="comment" rows="14" style="width: 99%; resize: both !important;">><?php echo $executesql['comment']; ?></textarea>
                     </div>
                 </div>
                 <table class="globalTables leftAlign noHover" cellpadding="0" cellspacing="0">
